@@ -1,0 +1,71 @@
+type Timestamp = int;
+type ProductId = nat;
+type Product = 
+ record {
+   category: text;
+   description: text;
+   id: ProductId;
+   images: vec text;
+   name: text;
+   price: float64;
+   stock: nat;
+ };
+type OrderStatus = 
+ variant {
+   confirmed;
+   delivered;
+   pending;
+   shipped;
+ };
+type OrderItemInput = 
+ record {
+   productId: nat;
+   quantity: nat;
+ };
+type OrderItem = 
+ record {
+   priceAtPurchase: float64;
+   productId: nat;
+   productName: text;
+   quantity: nat;
+ };
+type OrderId = nat;
+type Order = 
+ record {
+   createdAt: Timestamp;
+   customerName: text;
+   customerPhone: text;
+   deliveryAddress: text;
+   deliveryCity: text;
+   deliveryPincode: text;
+   id: OrderId;
+   items: vec OrderItem;
+   paymentMethod: text;
+   status: OrderStatus;
+   totalPrice: float64;
+ };
+type Category = 
+ record {
+   id: text;
+   name: text;
+ };
+service : {
+  addProduct: (token: text, name: text, description: text, price: float64,
+   category: text, images: vec text, stock: nat) -> (nat);
+  adminLogin: (username: text, password: text) -> (opt text);
+  createOrder: (items: vec OrderItemInput, customerName: text, customerPhone:
+   text, deliveryAddress: text, deliveryCity: text, deliveryPincode: 
+   text, paymentMethod: text) -> (nat);
+  deleteProduct: (token: text, id: nat) -> (bool);
+  editProduct: (token: text, id: nat, name: text, description: text, price:
+   float64, category: text, images: vec text, stock: nat) -> (bool);
+  getOrder: (id: nat) -> (opt Order) query;
+  getOrdersByPhone: (phone: text) -> (vec Order) query;
+  getProduct: (id: nat) -> (opt Product) query;
+  listCategories: () -> (vec Category) query;
+  listOrders: (token: text) -> (vec Order);
+  listProducts: (category: opt text, minPrice: opt float64, maxPrice:
+   opt float64) -> (vec Product) query;
+  updateOrderStatus: (token: text, id: nat, status: text) -> (bool);
+  verifyAdmin: (token: text) -> (bool) query;
+}

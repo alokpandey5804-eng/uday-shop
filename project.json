@@ -1,0 +1,25 @@
+{
+  "overview": "Uday is a Flipkart-style e-commerce app with a blue and silver color scheme. Customers can browse products by category, filter by price, manage a shopping cart, and place orders via Cash on Delivery. An owner-only admin panel allows full product and order management.",
+  "features": [
+    "Homepage with hero banner, featured products, and category showcase",
+    "Product listing with category and price range filters",
+    "Product detail page with image gallery and add-to-cart",
+    "Shopping cart with quantity management and localStorage persistence",
+    "Checkout with COD (active) and PhonePe/GPay/Paytm (Coming Soon)",
+    "Order confirmation with order tracking details",
+    "Admin panel with product add/edit/delete and order status management",
+    "Sample catalog with 15+ products across Electronics, Fashion, Home, Beauty, Sports",
+    "Blue (#1a73e8) and silver color scheme throughout"
+  ],
+  "category": "ecommerce",
+  "tags": [
+    "ecommerce",
+    "flipkart",
+    "shopping",
+    "cart",
+    "admin-panel",
+    "orders",
+    "blue-theme"
+  ],
+  "last_updated": "2026-04-22T11:11:15.662Z"
+}
